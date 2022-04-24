@@ -1,0 +1,60 @@
+{% extends 'template.html' %}
+
+{% block headcontent %}
+    <title>Cárdenas Fire Dashboard</title>
+{% endblock %}
+
+{% block pathcontent %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+      <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark">Dashboard</a></li>
+    </ol>
+  </nav>
+  {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <a href="{% url 'photographic_view' %}">
+            <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+              <i class="material-icons opacity-10">weekend</i>
+            </div>
+          </a>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Reportes fotográficos</p>
+            <h4 class="mb-0">Sin conteo aún</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Clic </span>en el ícono para ir</p>
+        </div>
+      </div>
+      <div class="row mt-2">
+          <h3>Resumen</h3>
+          <p>Propuesta de aplicación para Cárdenas Fire SAS, en la cual los usuario podrán realizar diversos Reportes
+              que se manejan dentro del modelo de negocio.
+          </p>
+          <p>
+              Actualmente se ha implementado el informe fotográfico, con el cual se facilita la creación de Reportes
+              que contienen evidencias fotográficas, por lo cual se facilita esta actividad. <br>
+              Las funciones que se tienen hasta el momento son:
+              <ul>
+                  <li>Crear nuevos reportes</li>
+                  <li>Agregar evidencias (imágenes) con una descripción</li>
+                  <li>En base a los ejemplos se acepta actualmente dos imágenes por cada descrición</li>
+                  <li>Eliminar reportes o evidencias de un reporte</li>
+                  <li>Generar el documento en tamaño A4 para imprimir con las evidencias</li>
+              </ul>
+          </p>
+          <p>
+              Una vez probada la aplicación, puede ponerse en contacto para más detalles acerca de 
+              los usuarios y futuras funciones.
+          </p>
+      </div>
+    </div>
+</div>
+  
+{% endblock %}

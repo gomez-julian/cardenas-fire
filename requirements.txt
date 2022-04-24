@@ -2,3 +2,4 @@ Django
 psycopg2-binary
 python-dotenv
 whitenoise
+azure-storage-blob==2.1.0

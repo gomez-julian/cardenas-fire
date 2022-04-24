@@ -20,7 +20,7 @@ def login_view(request):
             domain = Subdomain.objects.all().filter(user = user).first()
             if domain:
                 if domain.subdomain == 'CFS':
-                    return redirect('index')
+                    return redirect('cfs_dashboard')
             return redirect('index')
         else:
             return render(request, 'sign-in.html')
@@ -33,12 +33,12 @@ def signup_view(request):
         password = request.POST['password']
         fullname = request.POST['fullname']
         subdomain = request.POST['subdomain']
-        user = User.objects.create_user(username = username, first_name = fullname, password = password)
         if subdomain in domains:
-            permission = Subdomain.objects.create(subdomain = subdomain, user = user)
+            user = User.objects.create_user(username = username, first_name = fullname, password = password)
+            Subdomain.objects.create(subdomain = subdomain, user = user)
+            return redirect('login_view')
         else:
-            permission = Subdomain.objects.create(subdomain = 'NON', user = user)
-        return redirect('login_view')
+            return render(request, 'sign-up.html')
     return render(request, 'sign-up.html')
 
 @login_required
