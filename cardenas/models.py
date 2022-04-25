@@ -12,6 +12,6 @@ class PhotographicReport(models.Model):
 class PhotographicItem(models.Model):
     id = models.BigAutoField(primary_key=True)
     description = models.TextField(max_length=250)
-    pictureOne = models.CharField(max_length=100)
-    pictureTwo = models.CharField(max_length=100)
+    pictureOne = models.CharField(max_length=150)
+    pictureTwo = models.CharField(max_length=150)
     fk_informe = models.ForeignKey(PhotographicReport, on_delete=models.CASCADE)
