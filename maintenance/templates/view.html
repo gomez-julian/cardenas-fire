@@ -1,0 +1,51 @@
+{% extends 'template.html' %} {% block headcontent %}
+<title>Ver reportes</title>
+{% endblock %} {% block pathcontent %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+    <li class="breadcrumb-item text-sm">
+      <a class="opacity-5 text-dark">Reportes</a>
+    </li>
+    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
+      {{ type }}
+    </li>
+  </ol>
+  <h6 class="font-weight-bolder mb-0">Reportes</h6>
+</nav>
+{% endblock %} {% block content %}
+<div class="col-6 text-start mb-3">
+    <a class="btn bg-gradient-dark mb-0" href="{% url 'create_maintenance' %}"><i class="material-icons text-sm">add</i>&nbsp;&nbsp;Nuevo reporte</a>
+  </div>
+<div class="col-md-7 mt-4">
+  <div class="card">
+    <div class="card-header pb-0 px-3">
+      <h6 class="mb-0">Reportes creados</h6>
+    </div>
+    <div class="card-body pt-4 p-3">
+      <ul class="list-group">
+        {% for report in reports %}
+        <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+          <div class="d-flex flex-column">
+            <h6 class="mb-3 text-sm">{{ report.title }}</h6>
+            <span class="mb-2 text-xs">Fecha: <span class="text-dark font-weight-bold ms-sm-2">{{ report.date }}</span></span>
+            <span class="mb-2 text-xs">Ope. de mantenimiento: <span class="text-dark ms-sm-2 font-weight-bold">{{ report.maintenance_worker }}</span></span>
+            <span class="mb-2 text-xs">Ing. de mantenimiento: <span class="text-dark font-weight-bold ms-sm-2">{{ report.maintenance_engineer }}</span></span>
+            <span class="mb-2 text-xs">Contrato: <span class="text-dark ms-sm-2 font-weight-bold">{{ report.contract }}</span></span>
+            <span class="mb-2 text-xs">Red contra incendios: <span class="text-dark font-weight-bold ms-sm-2">{{ report.fire_network }}</span></span>
+            <span class="mb-2 text-xs">Contratante: <span class="text-dark ms-sm-2 font-weight-bold">{{ report.contractor }}</span></span>
+            <span class="text-xs">Contratista: <span class="text-dark ms-sm-2 font-weight-bold">{{ report.contratista }}</span></span>
+          </div>
+          <div class="ms-auto text-end">
+            <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{% url 'delete_maintenance' pk=report.id %}"><i class="material-icons text-sm me-2">delete</i>Eliminar</a>
+            <a class="btn btn-link text-dark px-3 mb-0" href="{% url 'form_maintenance' pk=report.id %}"><i class="material-icons text-sm me-2">edit</i>Editar</a>
+            <a class="btn btn-link text-dark px-3 mb-0" href="{% url 'form_maintenance' pk=report.id %}"><i class="material-icons text-sm me-2">more</i>Ver más</a>
+          </div>
+        </li>
+        {% endfor %}
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

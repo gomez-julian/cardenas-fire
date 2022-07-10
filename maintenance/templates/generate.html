@@ -1,0 +1,102 @@
+{% extends 'template.html' %} {% block headcontent %}
+<title>Creando reporte</title>
+{% endblock %} {% block pathcontent %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+    <li class="breadcrumb-item text-sm">
+      <a class="opacity-5 text-dark">Reportes</a>
+    </li>
+    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
+      Mantenimiento
+    </li>
+  </ol>
+  <h6 class="font-weight-bolder mb-0" id="type">{{ report.type }}</h6>
+</nav>
+{% endblock %} {% block content %}
+<div class="col-xl-5 col-sm-6 mb-4">
+  <div class="card">
+    <div class="card-header p-3 pt-2">
+      <a id="hidden-button" href="" style="visibility: hidden">
+        <div
+          class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute"
+        >
+          <i class="material-icons opacity-10">weekend</i>
+        </div>
+      </a>
+      <div class="text-end pt-1">
+        <p class="text-sm mb-0 text-capitalize">
+          <span id="type">{{ report.type }}</span>-<span id="key">{{ report.id }}</span>
+        </p>
+        <h4 class="mb-0">Generando reporte</h4>
+        <p class="text-sm mb-0 text-capitalize">{{ report.title }}</p>
+      </div>
+    </div>
+    <hr class="dark horizontal my-0" />
+    <div class="card-footer p-3">
+      <div class="progress" id="progress">
+        <span class="progress-bar" style="width: 75%"></span>
+      </div>
+      <p id="hidden-text" class="mb-0" style="visibility: hidden">
+        <span class="text-success text-sm font-weight-bolder"
+          >Clic en el botón </span
+        >para continuar
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  .progress {
+    width: 100%;
+    max-width: 260px;
+    height: 6px;
+    background: #e1e4e8;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress .progress-bar {
+    display: block;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      #ffd33d,
+      #ea4aaa 17%,
+      #b34bff 34%,
+      #01feff 51%,
+      #ffd33d 68%,
+      #ea4aaa 85%,
+      #b34bff
+    );
+    background-size: 300% 100%;
+    -webkit-animation: progress-animation 2s linear infinite;
+    animation: progress-animation 2s linear infinite;
+  }
+
+  @-webkit-keyframes progress-animation {
+    0% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: 0;
+    }
+  }
+
+  @keyframes progress-animation {
+    0% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: 0;
+    }
+  }
+</style>
+{% endblock %}
+{% block scripts %}
+{% load static %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script type="module" src="{% static 'js/firebase/firebase.generate.js' %}"></script>
+{% endblock %}

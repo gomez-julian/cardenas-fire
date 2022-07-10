@@ -1,5 +1,3 @@
-from dataclasses import field
-from pyexpat import model
 from django.forms import ModelForm
 from cardenas.models import PhotographicReport, PhotographicItem
 
